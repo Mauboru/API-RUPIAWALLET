@@ -1,7 +1,7 @@
 import { Model, DataTypes } from 'sequelize';
 import { sequelize } from '../instances/mysql';
 
-export class Categoria extends Model {
+export default class Categoria extends Model {
   public id!: number;
   public nome!: string;
   public tipo!: 'gasto' | 'ganho';

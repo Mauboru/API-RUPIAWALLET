@@ -1,5 +1,5 @@
-import { Categoria } from './Categoria';
-import { Transacao } from './Transacao';
+import Categoria from './Categoria';
+import Transacao from './Transacao';
 
 // Uma Categoria tem muitas Transacoes
 Categoria.hasMany(Transacao, {
