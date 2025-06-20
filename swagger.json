@@ -1,0 +1,61 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "API-RUPIAWALLET",
+        "version": "1.0.0",
+        "description": "Documentação da API-RUPIAWALLET"
+    },
+    "paths": {
+        "/": {
+            "get": {
+                "summary": "Sumário da API",
+                "description": "Retorna informações sobre o status da API, tempo de atividade e rotas disponíveis.",
+                "responses": {
+                    "200": {
+                        "description": "Detalhes do status da API",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "API-RUPIAWALLET"
+                                        },
+                                        "uptime": {
+                                            "type": "string",
+                                            "example": "2h 30m 15s"
+                                        },
+                                        "timestamp": {
+                                            "type": "string",
+                                            "example": "14/03/2025 10:30:00"
+                                        },
+                                        "developed": {
+                                            "type": "string",
+                                            "example": "Josue Henrique"
+                                        },
+                                        "portfolio": {
+                                            "type": "string",
+                                            "example": "https://josuashenrique.site/"
+                                        },
+                                        "rotas": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "example": [
+                                                "GET /",
+                                                "POST /users",
+                                                "GET /products"
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
