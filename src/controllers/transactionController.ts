@@ -34,7 +34,7 @@ export const newTransaction = async (req: Request, res: Response) => {
 
 export const getTransactions = async (req: Request, res: Response) => { 
     try {
-    const transactions = await Transacao.findAll();
+      const transactions = await Transacao.findAll({ order: [['data', 'DESC']] });
     return res.status(200).json(transactions);
     } catch (error) {
     console.error('Erro ao buscar transacoes:', error);
