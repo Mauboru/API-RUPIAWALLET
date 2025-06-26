@@ -10,7 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       tipo: {
-        type: Sequelize.ENUM('gasto', 'ganho'),
+        type: Sequelize.ENUM('ENTRADA', 'SAIDA'),
         allowNull: false
       },
       descricao: {
@@ -38,15 +38,6 @@ module.exports = {
       formaPagamento: {
         type: Sequelize.STRING,
         allowNull: false
-      },
-      recorrente: {
-        type: Sequelize.BOOLEAN,
-        allowNull: false,
-        defaultValue: false
-      },
-      observacoes: {
-        type: Sequelize.TEXT,
-        allowNull: true
       },
       createdAt: {
         allowNull: false,

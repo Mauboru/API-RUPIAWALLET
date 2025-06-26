@@ -24,7 +24,7 @@ Transacao.init(
       allowNull: false,
     },
     tipo: {
-      type: DataTypes.ENUM('gasto', 'ganho'),
+      type: DataTypes.ENUM('ENTRADA', 'SAIDA'),
       allowNull: false,
     },
     descricao: {
@@ -46,15 +46,6 @@ Transacao.init(
     formaPagamento: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    recorrente: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-      defaultValue: false,
-    },
-    observacoes: {
-      type: DataTypes.TEXT,
-      allowNull: true,
     },
   },
   {
