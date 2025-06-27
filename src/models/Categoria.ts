@@ -6,6 +6,7 @@ export default class Categoria extends Model {
   public nome!: string;
   public tipo!: 'gasto' | 'ganho';
   public cor?: string;
+  public icone?: string;
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
 }
@@ -27,6 +28,10 @@ Categoria.init(
       allowNull: false,
     },
     cor: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    icone: {
       type: DataTypes.STRING,
       allowNull: true,
     },
