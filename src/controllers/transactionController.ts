@@ -1,5 +1,7 @@
 import { Request, Response } from 'express';
 import Transacao from '../models/Transacao';
+import { Op } from 'sequelize';
+import { startOfMonth, endOfMonth } from 'date-fns';
 
 export const newTransaction = async (req: Request, res: Response) => {
   try {
@@ -33,11 +35,40 @@ export const newTransaction = async (req: Request, res: Response) => {
 };
 
 export const getTransactions = async (req: Request, res: Response) => { 
-    try {
-      const transactions = await Transacao.findAll({ order: [['data', 'DESC']] });
+	try {
+		const transactions = await Transacao.findAll({ order: [['data', 'DESC']] });
+		return res.status(200).json(transactions);
+	} catch (error) {
+		console.error('Erro ao buscar transacoes:', error);
+		return res.status(500).json({ message: 'Erro interno do servidor.' });
+	}
+}
+
+export const getTransactionsByMonth = async (req: Request, res: Response) => { 
+  try {
+    const { month } = req.params;
+    const mes = Number(month);
+
+    if (isNaN(mes) || mes < 1 || mes > 12) return res.status(400).json({ message: 'Mês inválido.' });
+
+    const now = new Date();
+    const anoAtual = now.getFullYear();
+
+    const inicio = startOfMonth(new Date(anoAtual, mes - 1));
+    const fim = endOfMonth(inicio);
+
+    const transactions = await Transacao.findAll({
+      where: {
+        data: {
+          [Op.between]: [inicio, fim]
+        }
+      },
+      order: [['data', 'DESC']]
+    });
+
     return res.status(200).json(transactions);
-    } catch (error) {
-    console.error('Erro ao buscar transacoes:', error);
+  } catch (error) {
+    console.error('Erro ao buscar transações:', error);
     return res.status(500).json({ message: 'Erro interno do servidor.' });
-    }
+  }
 }
