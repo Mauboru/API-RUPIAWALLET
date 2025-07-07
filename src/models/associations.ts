@@ -10,5 +10,7 @@ Categoria.hasMany(Transacao, {
 // Uma Transacao pertence a uma Categoria
 Transacao.belongsTo(Categoria, {
   foreignKey: 'categoriaId',
+  onDelete: 'CASCADE',
+  onUpdate: 'CASCADE',
   as: 'categoria'
 });

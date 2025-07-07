@@ -33,7 +33,7 @@ module.exports = {
           key: 'id'
         },
         onUpdate: 'CASCADE',
-        onDelete: 'RESTRICT'
+        onDelete: 'CASCADE'
       },
       formaPagamento: {
         type: Sequelize.STRING,

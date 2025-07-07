@@ -42,6 +42,12 @@ Transacao.init(
     categoriaId: {
       type: DataTypes.INTEGER.UNSIGNED,
       allowNull: false,
+      references: {
+        model: 'Categorias',
+        key: 'id',
+      },
+      onDelete: 'CASCADE',
+      onUpdate: 'CASCADE',
     },
     formaPagamento: {
       type: DataTypes.STRING,
