@@ -21,12 +21,16 @@ export const newCategory = async (req: Request, res: Response) => {
     const corDefault = cor ?? '#4287f5';
     let iconeFinal = 'https://png.pngtree.com/png-vector/20191130/ourmid/pngtree-document-setting-icon-png-image_2052164.jpg';
 
+    console.log(1);
+
     if (icone) {
       const result = submitImage(icone, nome);
       if (result.success && result.fileName) {
         iconeFinal = `/uploads/icone/${result.fileName}`; 
       }
     }
+
+    console.log(2);
 
     const category = await Categoria.create({ nome, tipo, cor: corDefault, icone: iconeFinal });
 
