@@ -31,7 +31,7 @@ export const newTransaction = async (req: Request, res: Response) => {
     return res.status(201).json({ message: "Novo registro feito com sucesso!", id: transacao.id });
   } catch (error) {
     console.error('Erro ao registrar transação:', error);
-    return res.status(500).json({ message: 'Erro interno do servidor.' });
+    return res.status(500).json({ message: 'Erro interrrrrrrrrrrrrrrrno do servidor.' });
   }
 };
 
