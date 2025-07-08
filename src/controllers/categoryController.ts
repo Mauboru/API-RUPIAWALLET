@@ -35,9 +35,9 @@ export const newCategory = async (req: Request, res: Response) => {
     const category = await Categoria.create({ nome, tipo, cor: corDefault, icone: iconeFinal });
 
     return res.status(201).json({ message: "Nova categoria criada com sucesso! ", categoria: category });
-  } catch (error) {
+  } catch (error: any) {
     console.error("Erro ao criar nova categoria", error);
-    return res.status(500).json({ message: "Erro iterno do servidor" })
+    return res.status(500).json({ message: "Erro interno do servidor", error: error.message || error })
   }
 };
 
