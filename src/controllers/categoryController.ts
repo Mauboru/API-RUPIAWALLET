@@ -82,3 +82,14 @@ export const deleteCategory = async (req: Request, res: Response) => {
     return res.status(500).json({ message: "Erro interno ao excluir categoria." });
   }
 };
+
+export const getCategoryById = async (req: Request, res: Response) => { 
+  try {
+    const { id } = req.params;
+    const category = await Categoria.findOne({ where: { id: id } });
+    return res.status(200).json(category);
+  } catch (error) {
+    console.error('Erro ao buscar categoria:', error);
+    return res.status(500).json({ message: 'Erro interno do servidor.' });
+  }
+}
