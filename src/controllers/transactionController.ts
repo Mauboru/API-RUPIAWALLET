@@ -31,7 +31,7 @@ export const newTransaction = async (req: Request, res: Response) => {
     return res.status(201).json({ message: "Novo registro feito com sucesso!", id: transacao.id });
   } catch (error) {
     console.error('Erro ao registrar transação:', error);
-    return res.status(500).json({ message: 'Erro interrrrrrrrrrrrrrrrno do servidor.' });
+    return res.status(500).json({ message: 'Erro interno do servidor.' });
   }
 };
 
@@ -47,7 +47,7 @@ export const getTransactions = async (req: Request, res: Response) => {
 
 export const getTransactionsByMonth = async (req: Request, res: Response) => {
   try {
-    const { month } = req.params; // ex: "2025-07"
+    const { month } = req.params;
     const [anoStr, mesStr] = month.split('-');
     const ano = Number(anoStr);
     const mes = Number(mesStr);
